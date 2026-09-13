@@ -235,7 +235,16 @@
 													<div class="s-product-hover"></div>
 												</div>
 												<h6><a href="<?php echo e(Route('book.show', $book->slug)); ?>"><?php echo e(Str::limit($book->title, 15, '...')); ?></a></h6>
-												<span><?php echo e(Str::limit($book->author->title, 20)); ?></span>
+													<span><?php echo e($book->author->title); ?></span>
+
+													<!-- Add To Cart -->
+													<button type="button" class="btn btn-primary btn-xs btn-cart add-to-cart" data-id="<?php echo e($book->id); ?>"
+												     data-name="<?php echo e($book->title); ?>"
+												     data-price="<?php echo e((int) $book->price); ?>"
+												     data-img="<?php echo e($book->book_img == 'No image found' ? 'no-img.png' : $book->book_img); ?>">
+														<i class="fa fa-shopping-basket"></i> Add to Cart
+													</button>
+													<!-- Add To Cart -->
 											</div>
 										</li>
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
